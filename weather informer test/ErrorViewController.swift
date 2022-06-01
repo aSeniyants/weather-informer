@@ -11,8 +11,10 @@ class ErrorViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+//        для наглядности устанавливаем цвет фона
         view.backgroundColor = .red
         
+//        текстовое поле с информацией о неудачной загрузке данных
         var errorLable = UILabel()
         errorLable.text = "Ошибка загрузки"
         errorLable.font = UIFont.systemFont(ofSize: 35)
@@ -30,7 +32,8 @@ class ErrorViewController: UIViewController {
         buttonFirst.contentEdgeInsets = UIEdgeInsets(top: 10,left: 10,bottom: 10,right: 10)
         buttonFirst.layer.cornerRadius = 10
         view.addSubview(buttonFirst)
-        buttonFirst.addTarget(self, action: #selector(printText), for: .touchUpInside)
+//        при нажатии запускаем функцию tryAgain()
+        buttonFirst.addTarget(self, action: #selector(tryAgain), for: .touchUpInside)
         buttonFirst.snp.makeConstraints { maker in
             maker.centerX.equalTo(self.view)
             maker.top.equalTo(errorLable).offset(80)
@@ -38,8 +41,8 @@ class ErrorViewController: UIViewController {
         
     }
     
-    @objc func printText(sender: UIButton) {
-        print("hi")
+//    функция просто переводит на контроллер определения погоды
+    @objc func tryAgain(sender: UIButton) {
         let controller: UIViewController = WeatherViewController()
         controller.modalPresentationStyle = .fullScreen
         self.present(controller, animated: true)

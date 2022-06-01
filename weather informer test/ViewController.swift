@@ -12,14 +12,11 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        initalize()
-        
-    }
-
-    private func initalize() {
+//        для удобства и наглядности задаем цвет фона
         view.backgroundColor = UIColor(red: 0/255.0, green: 145/255.0, blue: 255/255.0, alpha: 1)
-        var helloLable = UILabel()
+        
+//        согласно ТЗ располагаем текст и кнопку с предложением запросить погоду
+        let helloLable = UILabel()
         helloLable.text = "Информер погоды"
         helloLable.font = UIFont.systemFont(ofSize: 35)
         view.addSubview(helloLable)
@@ -27,10 +24,8 @@ class ViewController: UIViewController {
             maker.centerX.equalTo(self.view)
             maker.top.equalToSuperview().inset(120)
         }
-        
-        
         let buttonFirst = UIButton()
-        let config1 = UIImage.SymbolConfiguration(pointSize: 25, weight: .bold, scale: .large)
+        _ = UIImage.SymbolConfiguration(pointSize: 25, weight: .bold, scale: .large)
         buttonFirst.setTitle("Запросить данные", for: .normal)
         buttonFirst.titleLabel?.font = UIFont.systemFont(ofSize: 35)
         buttonFirst.backgroundColor = .gray
@@ -42,8 +37,10 @@ class ViewController: UIViewController {
             maker.centerX.equalTo(self.view)
             maker.top.equalTo(helloLable).offset(80)
         }
+        
     }
-    
+
+//    при нажатии на кнопку запускается функция для перехода на другой контроллер
     @objc func printText(sender: UIButton) {
         let controller: UIViewController = WeatherViewController()
         controller.modalPresentationStyle = .fullScreen
