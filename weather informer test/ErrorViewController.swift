@@ -13,6 +13,15 @@ class ErrorViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .red
         
+        var errorLable = UILabel()
+        errorLable.text = "Ошибка загрузки"
+        errorLable.font = UIFont.systemFont(ofSize: 35)
+        view.addSubview(errorLable)
+        errorLable.snp.makeConstraints { maker in
+            maker.centerX.equalTo(self.view)
+            maker.top.equalToSuperview().inset(120)
+        }
+        
         let buttonFirst = UIButton()
         let config1 = UIImage.SymbolConfiguration(pointSize: 25, weight: .bold, scale: .large)
         buttonFirst.setTitle("Попробовать снова", for: .normal)
@@ -24,10 +33,9 @@ class ErrorViewController: UIViewController {
         buttonFirst.addTarget(self, action: #selector(printText), for: .touchUpInside)
         buttonFirst.snp.makeConstraints { maker in
             maker.centerX.equalTo(self.view)
-            maker.top.equalToSuperview().offset(80)
+            maker.top.equalTo(errorLable).offset(80)
         }
         
-
     }
     
     @objc func printText(sender: UIButton) {

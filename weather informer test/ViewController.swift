@@ -45,7 +45,6 @@ class ViewController: UIViewController {
     }
     
     @objc func printText(sender: UIButton) {
-        print("hi")
         let controller: UIViewController = WeatherViewController()
         controller.modalPresentationStyle = .fullScreen
         self.present(controller, animated: true)
